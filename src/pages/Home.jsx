@@ -43,9 +43,9 @@ const Home = () => {
                                 <tr>
                                     <td>{coin.market_cap_rank}</td>
                                     <td>{coin.name}</td>
-                                    <td>{coin.current_price}</td>
+                                    <td>{`$${coin.current_price.toFixed(3)}`}</td>
                                     <td>{coin.price_change_percentage_24h.toFixed(2) + '%'}</td>
-                                    <td>{coin.market_cap}</td>
+                                    <td>{`$${coin.market_cap}`}</td>
                                 </tr>
                             );
                         })}
