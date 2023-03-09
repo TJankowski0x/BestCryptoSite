@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { useQuery } from 'react-query'
-import Axios from "axios";
-
-
+import React from 'react';
+import { useQuery } from 'react-query';
+import Axios from 'axios';
 
 const Home = () => {
     // const [marketData, setMarket] = useState(false)
 
-    const { data: marketData, isLoading, isError, refetchOnWindowFocus } = useQuery('marketInfo', () => {
-        return Axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false").then((res) => res.data);
+    const {
+        data: marketData,
+        isLoading,
+        isError,
+        refetchOnWindowFocus
+    } = useQuery('marketInfo', () => {
+        return Axios.get(
+            'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false'
+        ).then((res) => res.data);
     });
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div>Loading...</div>;
     }
 
     if (isError) {
-        return <div>Error...</div>
+        return <div>Error...</div>;
     }
 
     return (
@@ -34,12 +39,12 @@ const Home = () => {
                     </thead>
                     <tbody>
                         {marketData.slice(0, 10).map((coin) => {
-                            return(
+                            return (
                                 <tr>
                                     <td>{coin.market_cap_rank}</td>
                                     <td>{coin.name}</td>
                                     <td>{coin.current_price}</td>
-                                    <td>{(coin.price_change_percentage_24h).toFixed(2) + '%'}</td>
+                                    <td>{coin.price_change_percentage_24h.toFixed(2) + '%'}</td>
                                     <td>{coin.market_cap}</td>
                                 </tr>
                             );
@@ -48,7 +53,7 @@ const Home = () => {
                 </table>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Home;
