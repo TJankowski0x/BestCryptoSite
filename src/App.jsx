@@ -1,18 +1,25 @@
-import { useState } from 'react'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import React, { useEffect, useState } from 'react';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Axios } from 'axios';
 import Nav from './components/Nav'
+import Home from './Home'
 import './CSS/App.scss'
 
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <Router>
-      <div className="App">
+    <div className="app">
+      <Router>
         <Nav />
-      </div>
-    </Router>
+          <div className="site-container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </div>
+        </Router>
+    </div>
   )
 }
 
