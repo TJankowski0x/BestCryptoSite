@@ -1,1 +1,13 @@
+@use './globals' as *;
+
 @use './nav';
+@use './home';
+
+body {
+    margin: 0;
+}
+
+.site-container {
+    width: 100%;
+    min-height: 90vh;
+}

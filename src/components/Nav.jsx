@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { BiBitcoin } from 'react-icons/bi';
+import { MdOutlineHouse } from 'react-icons/md';
 const Nav = () => {
     return (
         <nav>
             <div className="nav-container">
                 <div className="nav-left-container">
                     <div className="nav-logo">
-                        <img src="" alt="logo" className="logo" />
-                        <img src="" alt="logo" className="logo" />
+                        <MdOutlineHouse />
+                        <BiBitcoin />
                     </div>
                 </div>
                 <div className="nav-right-container">
