@@ -1,5 +1,15 @@
 $background-color: #18181b;
 $border-color: #52525b;
+$lightblack: #27272a;
+$grey: #323036;
+$red: #991b1b;
+$green: #166534;
+$white: #e4e4e7;
+
+@font-face {
+    font-family: Comfortaa;
+    src: url(Comfortaa-VariableFont_wght.ttf);
+}
 
 @mixin flex($justify, $align, $direction: row) {
     display: flex;

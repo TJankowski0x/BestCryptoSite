@@ -2,9 +2,12 @@
 
 @use './nav';
 @use './home';
+@use './details';
 
 body {
     margin: 0;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .site-container {
