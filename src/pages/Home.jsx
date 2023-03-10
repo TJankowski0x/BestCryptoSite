@@ -10,11 +10,17 @@ const Home = () => {
         isLoading,
         isError,
         refetchOnWindowFocus
-    } = useQuery('marketInfo', () => {
-        return Axios.get(
-            'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false'
-        ).then((res) => res.data);
-    });
+    } = useQuery(
+        'marketInfo',
+        () => {
+            return Axios.get(
+                'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false'
+            ).then((res) => res.data);
+        },
+        {
+            refetchInterval: 60000
+        }
+    );
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -26,6 +32,10 @@ const Home = () => {
 
     return (
         <div className="home">
+            <div className="homeheader">
+                <p>Top cryptocurrencies right now</p>
+                <input type="text" className="homeinput" />
+            </div>
             <div className="table-container">
                 <table>
                     <thead>
@@ -43,9 +53,12 @@ const Home = () => {
                                 <tr>
                                     <td>{coin.market_cap_rank}</td>
                                     <td>{coin.name}</td>
-                                    <td>{`$${coin.current_price.toFixed(3)}`}</td>
+                                    <td>{`$${coin.current_price.toLocaleString(undefined, {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    })}`}</td>
                                     <td>{coin.price_change_percentage_24h.toFixed(2) + '%'}</td>
-                                    <td>{`$${coin.market_cap}`}</td>
+                                    <td>{`$${coin.market_cap.toLocaleString()}`}</td>
                                 </tr>
                             );
                         })}
