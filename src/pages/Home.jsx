@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Axios from 'axios';
 
@@ -30,12 +31,11 @@ const Home = () => {
         return <div>Error...</div>;
     }
 
-
     return (
         <div className="home">
             <div className="homeheader">
                 <p>Top cryptocurrencies right now</p>
-                <input type="text" className="homeinput"/>
+                <input type="text" className="homeinput" />
             </div>
             <div className="table-container">
                 <table>
@@ -54,21 +54,46 @@ const Home = () => {
                             return (
                                 <tr>
                                     <td>{coin.market_cap_rank}</td>
-                                    
-                                    <td>{coin.name + " (" + coin.symbol.toUpperCase() + ")"}</td>
+
+                                    <Link to={`/${coin.id}`}>
+                                        <td>
+                                            {coin.name + ' (' + coin.symbol.toUpperCase() + ')'}
+                                        </td>
+                                    </Link>
                                     <td>{`$${coin.current_price.toLocaleString(undefined, {
                                         minimumFractionDigits: 2,
                                         maximumFractionDigits: 2
                                     })}`}</td>
-                                    <td style={{color: coin.price_change_percentage_1h_in_currency>0?
-                                    "green":"red"
-                                    }}>{coin.price_change_percentage_1h_in_currency>0?
-                                        '+' + coin.price_change_percentage_1h_in_currency.toFixed(2) + '%':coin.price_change_percentage_1h_in_currency.toFixed(2)  + '%'
-                                    }</td>
-                                    <td style={{color: coin.price_change_percentage_24h>0?
-                                    "green":"red"
-                                    }}>{coin.price_change_percentage_24h>0?
-                                    "+" + coin.price_change_percentage_24h.toFixed(2)  + '%':coin.price_change_percentage_24h.toFixed(2) + '%'}</td>
+                                    <td
+                                        style={{
+                                            color:
+                                                coin.price_change_percentage_1h_in_currency > 0
+                                                    ? 'green'
+                                                    : 'red'
+                                        }}>
+                                        {coin.price_change_percentage_1h_in_currency > 0
+                                            ? '+' +
+                                              coin.price_change_percentage_1h_in_currency.toFixed(
+                                                  2
+                                              ) +
+                                              '%'
+                                            : coin.price_change_percentage_1h_in_currency.toFixed(
+                                                  2
+                                              ) + '%'}
+                                    </td>
+                                    <td
+                                        style={{
+                                            color:
+                                                coin.price_change_percentage_24h > 0
+                                                    ? 'green'
+                                                    : 'red'
+                                        }}>
+                                        {coin.price_change_percentage_24h > 0
+                                            ? '+' +
+                                              coin.price_change_percentage_24h.toFixed(2) +
+                                              '%'
+                                            : coin.price_change_percentage_24h.toFixed(2) + '%'}
+                                    </td>
                                     <td>{`$${coin.market_cap.toLocaleString()}`}</td>
                                 </tr>
                             );

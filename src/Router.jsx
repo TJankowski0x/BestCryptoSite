@@ -13,7 +13,7 @@ const App = () => {
             <div className="site-container">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="details" element={<CryptoDetails />} />
+                    <Route path="/:cryptoID" element={<CryptoDetails />} />
                 </Routes>
             </div>
         </Router>

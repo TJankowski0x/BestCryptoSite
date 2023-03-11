@@ -8,14 +8,28 @@ const Nav = () => {
             <div className="nav-container">
                 <div className="nav-left-container">
                     <div className="nav-logo">
-                        <MdOutlineHouse />
-                        <BiBitcoin />
+                        <NavLink to={'/'} className="nav-link">
+                            <MdOutlineHouse
+                                className="icon"
+                                style={{ height: '50px', width: '50px', aspectRatio: '1/1' }}
+                            />
+                        </NavLink>
+                        <NavLink className="nav-link">
+                            <BiBitcoin
+                                className="icon"
+                                style={{ height: '50px', width: '50px', aspectRatio: '1/1' }}
+                            />
+                        </NavLink>
                     </div>
                 </div>
                 <div className="nav-right-container">
                     <div className="nav-links-container">
-                        <NavLink to={'/'}>Home</NavLink>
-                        <NavLink to={'..\pages\CryptoDetails.jsx'}>Bitcoin</NavLink>
+                        <NavLink to={'/'} className="nav-link">
+                            Home
+                        </NavLink>
+                        <NavLink to={'/'} className="nav-link">
+                            Bitcoin
+                        </NavLink>
                     </div>
                 </div>
             </div>
