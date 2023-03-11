@@ -14,7 +14,7 @@ const Home = () => {
         'marketInfo',
         () => {
             return Axios.get(
-                'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false'
+                'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h'
             ).then((res) => res.data);
         },
         {
@@ -35,7 +35,7 @@ const Home = () => {
         <div className="home">
             <div className="homeheader">
                 <p>Top cryptocurrencies right now</p>
-                <input type="text" className="homeinput" />
+                <input type="text" className="homeinput"/>
             </div>
             <div className="table-container">
                 <table>
@@ -44,6 +44,7 @@ const Home = () => {
                             <th>Rank</th>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>Change 1h</th>
                             <th>Change 24h</th>
                             <th>Market Cap</th>
                         </tr>
@@ -53,13 +54,19 @@ const Home = () => {
                             return (
                                 <tr>
                                     <td>{coin.market_cap_rank}</td>
+                                    
                                     <td>{coin.name + " (" + coin.symbol.toUpperCase() + ")"}</td>
                                     <td>{`$${coin.current_price.toLocaleString(undefined, {
                                         minimumFractionDigits: 2,
                                         maximumFractionDigits: 2
                                     })}`}</td>
+                                    <td style={{color: coin.price_change_percentage_1h_in_currency>0?
+                                    "green":"red"
+                                    }}>{coin.price_change_percentage_1h_in_currency>0?
+                                        '+' + coin.price_change_percentage_1h_in_currency.toFixed(2) + '%':coin.price_change_percentage_1h_in_currency.toFixed(2)  + '%'
+                                    }</td>
                                     <td style={{color: coin.price_change_percentage_24h>0?
-                                    "$green":"$red"
+                                    "green":"red"
                                     }}>{coin.price_change_percentage_24h>0?
                                     "+" + coin.price_change_percentage_24h.toFixed(2)  + '%':coin.price_change_percentage_24h.toFixed(2) + '%'}</td>
                                     <td>{`$${coin.market_cap.toLocaleString()}`}</td>
