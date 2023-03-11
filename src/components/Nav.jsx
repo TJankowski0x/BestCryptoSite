@@ -15,7 +15,7 @@ const Nav = () => {
                 <div className="nav-right-container">
                     <div className="nav-links-container">
                         <NavLink to={'/'}>Home</NavLink>
-                        <NavLink>Bitcoin</NavLink>
+                        <NavLink to={'..\pages\CryptoDetails.jsx'}>Bitcoin</NavLink>
                     </div>
                 </div>
             </div>

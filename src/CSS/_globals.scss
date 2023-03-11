@@ -8,7 +8,13 @@ $white: #e4e4e7;
 
 @font-face {
     font-family: Comfortaa;
-    src: url(Comfortaa-VariableFont_wght.ttf);
+    src: url('..\assets\fonts\Comfortaa-VariableFont_wght.ttf');
+}
+
+@mixin table($padding: 12px, $border: 1px $border-color solid, $spacing: 0px){
+    padding: $padding;
+    border: $border;
+    border-spacing: $spacing;
 }
 
 @mixin flex($justify, $align, $direction: row) {

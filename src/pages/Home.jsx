@@ -30,6 +30,7 @@ const Home = () => {
         return <div>Error...</div>;
     }
 
+
     return (
         <div className="home">
             <div className="homeheader">
@@ -52,12 +53,15 @@ const Home = () => {
                             return (
                                 <tr>
                                     <td>{coin.market_cap_rank}</td>
-                                    <td>{coin.name}</td>
+                                    <td>{coin.name + " (" + coin.symbol.toUpperCase() + ")"}</td>
                                     <td>{`$${coin.current_price.toLocaleString(undefined, {
                                         minimumFractionDigits: 2,
                                         maximumFractionDigits: 2
                                     })}`}</td>
-                                    <td>{coin.price_change_percentage_24h.toFixed(2) + '%'}</td>
+                                    <td style={{color: coin.price_change_percentage_24h>0?
+                                    "$green":"$red"
+                                    }}>{coin.price_change_percentage_24h>0?
+                                    "+" + coin.price_change_percentage_24h.toFixed(2)  + '%':coin.price_change_percentage_24h.toFixed(2) + '%'}</td>
                                     <td>{`$${coin.market_cap.toLocaleString()}`}</td>
                                 </tr>
                             );

@@ -5,24 +5,34 @@
         font-size: 42px;
     }
 
+    input{
+        background: url() no-repeat 17px 17px;
+        background-color: $grey;
+        border: 2px $border-color solid;
+        border-radius: 10px;
+        height: 40px;
+        width: 20vw;
+        color: $white;
+        font-size: 20px;
+    }
+
     table {
         th {
             font-weight: 430;
             text-align: start;
-            padding: 15px;
-            border: 1px $border-color solid;
-            border-spacing: 0px;
+            @include table;
+            border-bottom: none;
         }
 
         td {
             font-weight: 330;
-            padding: 15px;
-            border: 1px $border-color solid;
-            border-spacing: 0px;
+            @include table;
+            border-bottom: none;
+            border-top: none;
         }
 
         border-radius: 15px;
-        border: 1px $border-color solid;
+        border: 2px $border-color solid;
         border-spacing: 0px;
         font-size: 20px;
         width: 100%;
@@ -31,15 +41,15 @@
     background-color: $background-color;
     height: 90vh;
     color: $white;
-    font-family: 'Comfortaa';
+    font-family: Comfortaa;
     @include flex($justify: center, $align: center, $direction: column);
 }
 
 .homeheader {
     @include flex($justify: space-between, $align: center, $direction: row);
-    width: 80%;
+    width: 85%;
 }
 
 .table-container {
-    width: 80%;
+    width: 85%;
 }
