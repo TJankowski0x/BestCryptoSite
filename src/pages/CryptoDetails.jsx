@@ -39,7 +39,10 @@ const CryptoDetails = () => {
                     <h1>{cryptoInfo.name}</h1>
                 </div>
                 <div className="head-price">
-                    <h2>{cryptoInfo.market_data.current_price.usd}</h2>
+                    <h2>{`$${cryptoInfo.market_data.current_price.usd.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    })}`}</h2>
                 </div>
             </div>
             <div className="rest-data">
@@ -63,8 +66,7 @@ const CryptoDetails = () => {
                             text="Total volume"
                             whiteInfo={`$${cryptoInfo.market_data.total_volume.usd.toLocaleString()}`}
                         />
-                        <BoxInfo />
-                        <BoxInfo />
+                        <BoxInfo text="Trading Volume(24h)/cos tu sie wymysli" />
                     </div>
                 </div>
                 <div className="right-info">
