@@ -14,7 +14,7 @@ const Nav = () => {
                                 style={{ height: '50px', width: '50px', aspectRatio: '1/1' }}
                             />
                         </NavLink>
-                        <NavLink className="nav-link">
+                        <NavLink to={'/bitcoin'} className="nav-link">
                             <BiBitcoin
                                 className="icon"
                                 style={{ height: '50px', width: '50px', aspectRatio: '1/1' }}
@@ -27,7 +27,7 @@ const Nav = () => {
                         <NavLink to={'/'} className="nav-link">
                             Home
                         </NavLink>
-                        <NavLink to={'/'} className="nav-link">
+                        <NavLink to={'/bitcoin'} className="nav-link">
                             Bitcoin
                         </NavLink>
                     </div>

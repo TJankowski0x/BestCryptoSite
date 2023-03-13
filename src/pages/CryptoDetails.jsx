@@ -3,19 +3,13 @@ import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 
-const Whitebox = (text, value) => {
+const BoxInfo = (props) => {
     return (
-        <div className="whitebox">
-            <p>{}</p>
-            <p>{}</p>
+        <div className="white-box-details">
+            <p className="white-box-p">{props.text}</p>
+            <p className="white-box-p">{props.whiteInfo}</p>
         </div>
     );
-};
-
-const Pricebox = (text, value) => {
-    // if (value > 0) {
-    // } else {
-    // }
 };
 
 const CryptoDetails = () => {
@@ -39,37 +33,79 @@ const CryptoDetails = () => {
     }
 
     return (
-        <div className="detailspage">
-            <div className="tagparent">
-                <img src="image" alt="image" />
-                <h1>{cryptoInfo.name}</h1>
-                <div className="headpricebox">
-                    <h2></h2>
+        <div className="details-container">
+            <div className="head-info">
+                <div className="crypto-name">
+                    <h1>{cryptoInfo.name}</h1>
+                </div>
+                <div className="head-price">
+                    <h2>{cryptoInfo.market_data.current_price.usd}</h2>
                 </div>
             </div>
-            <div className="bigboxparent">
-                <h2>Basic Data</h2>
-                <p>{cryptoInfo.market_data.current_price.usd}</p>
-                <Whitebox text="Price" value={cryptoInfo.market_data.current_price.usd} />
-            </div>
-            <div className="">
-                <h2>Price Data</h2>
-                <Pricebox
-                    text="Last Hour"
-                    value="price_change_percentage_1h_in_currency"></Pricebox>
-                <Pricebox
-                    text="Last 24h"
-                    value="price_change_percentage_24h_in_currency"></Pricebox>
-                <Pricebox text="Last 7d" value="price_change_percentage_7d_in_currency"></Pricebox>
-            </div>
-            <div>
-                <h2>Supply Data</h2>
+            <div className="rest-data">
+                <div className="left-info">
+                    <div className="basic-data">
+                        <BoxInfo
+                            text="Price"
+                            whiteInfo={`$${cryptoInfo.market_data.current_price.usd.toLocaleString(
+                                undefined,
+                                {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                }
+                            )}`}
+                        />
+                        <BoxInfo
+                            text="Market Cup"
+                            whiteInfo={`$${cryptoInfo.market_data.market_cap.usd.toLocaleString()}`}
+                        />
+                        <BoxInfo
+                            text="Total volume"
+                            whiteInfo={`$${cryptoInfo.market_data.total_volume.usd.toLocaleString()}`}
+                        />
+                        <BoxInfo />
+                        <BoxInfo />
+                    </div>
+                </div>
+                <div className="right-info">
+                    <div className="exchanges"></div>
+                </div>
             </div>
         </div>
     );
 };
 
 export default CryptoDetails;
+
+// return (
+//     <div className="detailspage">
+//         <div className="tagparent">
+//             <img src="image" alt="image" />
+//             <h1>{cryptoInfo.name}</h1>
+//             <div className="headpricebox">
+//                 <h2></h2>
+//             </div>
+//         </div>
+//         <div className="bigboxparent">
+//             <h2>Basic Data</h2>
+//             <p>{cryptoInfo.market_data.current_price.usd}</p>
+//             <Whitebox text="Price" value={cryptoInfo.market_data.current_price.usd} />
+//         </div>
+//         <div className="">
+//             <h2>Price Data</h2>
+//             <Pricebox
+//                 text="Last Hour"
+//                 value="price_change_percentage_1h_in_currency"></Pricebox>
+//             <Pricebox
+//                 text="Last 24h"
+//                 value="price_change_percentage_24h_in_currency"></Pricebox>
+//             <Pricebox text="Last 7d" value="price_change_percentage_7d_in_currency"></Pricebox>
+//         </div>
+//         <div>
+//             <h2>Supply Data</h2>
+//         </div>
+//     </div>
+// );
 
 // <Whitebox text="Volume" value="total_volume"></Whitebox>
 // <Whitebox text="Market Cap" value="market_cap"></Whitebox>

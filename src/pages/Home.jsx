@@ -55,7 +55,7 @@ const Home = () => {
                                 <tr>
                                     <td>{coin.market_cap_rank}</td>
 
-                                    <Link to={`/${coin.id}`}>
+                                    <Link to={`/${coin.id}`} className="name-link">
                                         <td>
                                             {coin.name + ' (' + coin.symbol.toUpperCase() + ')'}
                                         </td>
