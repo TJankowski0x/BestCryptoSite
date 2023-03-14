@@ -5,6 +5,12 @@ nav {
     height: 10vh;
     background-color: $background-color;
     border-bottom: 1px solid $border-color;
+    font-family: Comfortaa;
+    font-size: 28px;
+}
+
+.nav-link{
+        padding: 15px;
 }
 
 .nav-container {

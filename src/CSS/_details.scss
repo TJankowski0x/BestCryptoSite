@@ -1,1 +1,85 @@
 @use './globals' as *;
+
+.details-container{
+    background-color: $background-color;
+    height: 90vh;
+    margin: 0px;
+    overflow: hidden;
+    color: $white;
+    font-family: Comfortaa;
+    width: 100%;
+    @include flex($justify: flex-start, $align: flex-start, $direction: column)
+}
+
+.head-info{
+    img{
+        width: 100px;
+        height: 100px;
+    }
+    font-size: 30px;
+    margin-left: 100px;
+    @include flex($justify: flex-start, $align: center, $direction: row);
+}
+
+.head-box{
+    background-color: #bfdbfe;
+    border-radius: 18px;
+    color: $background-color;
+    height: 70px;
+    width: 300px;
+    @include flex($justify: center, $align: center, $direction: row);
+}
+
+.head-price{
+    font-weight:lighter;
+    font-size: 26px;
+    margin: 40px;
+}
+
+.crypto-name{
+    margin: 40px;
+}
+
+.rest-data{
+    margin-left: 100px;
+    @include flex($justify: center, $align: flex-start, $direction: row);
+}
+
+.header{
+    font-size: 42px;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.white-box-details{
+    background-color: $white;
+    border-radius: 8px;
+    color: $background-color;
+    font-weight: bold;
+    margin: 10px;
+    @include flex($justify: space-between, $align: center, $direction: row);
+}
+
+.white-box-p{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.left-info{
+    width: 40vw;
+    @include flex($justify: space-between, $align: space-between, $direction: column);
+}
+
+.bot-box{
+    @include flex($justify: space-between, $align: space-between, $direction: row);
+}
+
+.supply-data{
+    margin-left: 40px;
+}
+
+.right-info{
+    padding-left: 40px;
+    width: 50vw;
+    @include flex($justify: flex-start, $align: flex-start, $direction: column);
+}
