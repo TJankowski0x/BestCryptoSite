@@ -4,10 +4,12 @@ import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 
 const BoxInfo = (props) => {
+    console.log(props);
+    const style = props.styles.isTrue ? (props.styles.color ? 'green' : 'red') : '';
     return (
-        <div className="white-box-details">
+        <div className={`white-box-details ${style}`}>
             <p className="white-box-p">{props.text}</p>
-            <p className="white-box-p">{props.whiteInfo}</p>
+            <p className={`white-box-p`}>{props.whiteInfo}</p>
         </div>
     );
 };
@@ -31,15 +33,6 @@ const CryptoDetails = () => {
     if (isError) {
         return <div>Error...</div>;
     }
-
-    const styles = {
-        colorgreen: {
-            backgroundColor:
-                cryptoInfo.market_data.price_change_percentage_1h_in_currency.usd > 0
-                    ? 'green'
-                    : 'red'
-        }
-    };
 
     return (
         <div className="details-container">
@@ -67,25 +60,28 @@ const CryptoDetails = () => {
                         <BoxInfo
                             text="Market Cap Rank"
                             whiteInfo={`#${cryptoInfo.market_cap_rank}`}
+                            styles={{ isTrue: false }}
                         />
                         <BoxInfo
                             text="Market Cap"
                             whiteInfo={`$${cryptoInfo.market_data.market_cap.usd.toLocaleString()}`}
+                            styles={{ isTrue: false }}
                         />
                         <BoxInfo
                             text="Trading Volume 24h"
                             whiteInfo={`$${cryptoInfo.market_data.total_volume.usd.toLocaleString()}`}
+                            styles={{ isTrue: false }}
                         />
                         <BoxInfo
                             text="All-time high"
                             whiteInfo={`$${cryptoInfo.market_data.ath.usd}`}
+                            styles={{ isTrue: false }}
                         />
                     </div>
                     <div className="bot-box">
                         <div className="price-data">
                             <p className="header">Price Data</p>
                             <BoxInfo
-                                style={styles.colorgreen}
                                 text="Last 1h"
                                 whiteInfo={
                                     cryptoInfo.market_data.price_change_percentage_1h_in_currency
@@ -98,16 +94,17 @@ const CryptoDetails = () => {
                                               2
                                           ) + '%'
                                 }
+                                styles={{
+                                    isTrue: true,
+                                    color:
+                                        cryptoInfo.market_data
+                                            .price_change_percentage_1h_in_currency.usd > 0
+                                            ? true
+                                            : false
+                                }}
                             />
                             <BoxInfo
-                                style={{
-                                    backgroundColor:
-                                        cryptoInfo.market_data
-                                            .price_change_percentage_24h_in_currency.usd > 0
-                                            ? 'green'
-                                            : 'red'
-                                }}
-                                text="Last 1h"
+                                text="Last 24h"
                                 whiteInfo={
                                     cryptoInfo.market_data.price_change_percentage_24h_in_currency
                                         .usd > 0
@@ -120,14 +117,16 @@ const CryptoDetails = () => {
                                               2
                                           ) + '%'
                                 }
+                                styles={{
+                                    isTrue: true,
+                                    color:
+                                        cryptoInfo.market_data
+                                            .price_change_percentage_24h_in_currency.usd > 0
+                                            ? true
+                                            : false
+                                }}
                             />
                             <BoxInfo
-                                style={`${
-                                    cryptoInfo.market_data.price_change_percentage_7d_in_currency
-                                        .usd > 0
-                                        ? { backgroundColor: 'green' }
-                                        : { backgroundColor: 'red' }
-                                }`}
                                 text="Last 7d"
                                 whiteInfo={
                                     cryptoInfo.market_data.price_change_percentage_7d_in_currency
@@ -141,6 +140,14 @@ const CryptoDetails = () => {
                                               2
                                           ) + '%'
                                 }
+                                styles={{
+                                    isTrue: true,
+                                    color:
+                                        cryptoInfo.market_data
+                                            .price_change_percentage_7d_in_currency.usd > 0
+                                            ? true
+                                            : false
+                                }}
                             />
                         </div>
                         <div className="supply-data">
@@ -148,14 +155,17 @@ const CryptoDetails = () => {
                             <BoxInfo
                                 text="Max Supply"
                                 whiteInfo={cryptoInfo.market_data.max_supply}
+                                styles={{ isTrue: false }}
                             />
                             <BoxInfo
                                 text="Circulating Supply"
                                 whiteInfo={cryptoInfo.market_data.circulating_supply}
+                                styles={{ isTrue: false }}
                             />
                             <BoxInfo
                                 text="Total Supply"
                                 whiteInfo={cryptoInfo.market_data.total_supply}
+                                styles={{ isTrue: false }}
                             />
                         </div>
                     </div>

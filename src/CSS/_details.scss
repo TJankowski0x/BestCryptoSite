@@ -1,6 +1,6 @@
 @use './globals' as *;
 
-.details-container{
+.details-container {
     background-color: $background-color;
     height: 90vh;
     margin: 0px;
@@ -8,11 +8,11 @@
     color: $white;
     font-family: Comfortaa;
     width: 100%;
-    @include flex($justify: flex-start, $align: flex-start, $direction: column)
+    @include flex($justify: flex-start, $align: flex-start, $direction: column);
 }
 
-.head-info{
-    img{
+.head-info {
+    img {
         width: 100px;
         height: 100px;
     }
@@ -21,7 +21,7 @@
     @include flex($justify: flex-start, $align: center, $direction: row);
 }
 
-.head-box{
+.head-box {
     background-color: #bfdbfe;
     border-radius: 18px;
     color: $background-color;
@@ -30,28 +30,28 @@
     @include flex($justify: center, $align: center, $direction: row);
 }
 
-.head-price{
-    font-weight:lighter;
+.head-price {
+    font-weight: lighter;
     font-size: 26px;
     margin: 40px;
 }
 
-.crypto-name{
+.crypto-name {
     margin: 40px;
 }
 
-.rest-data{
+.rest-data {
     margin-left: 100px;
     @include flex($justify: center, $align: flex-start, $direction: row);
 }
 
-.header{
+.header {
     font-size: 42px;
     margin: 10px;
     margin-bottom: 20px;
 }
 
-.white-box-details{
+.white-box-details {
     background-color: $white;
     border-radius: 8px;
     color: $background-color;
@@ -60,26 +60,36 @@
     @include flex($justify: space-between, $align: center, $direction: row);
 }
 
-.white-box-p{
+.white-box-p {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-.left-info{
+.left-info {
     width: 40vw;
     @include flex($justify: space-between, $align: space-between, $direction: column);
 }
 
-.bot-box{
+.bot-box {
     @include flex($justify: space-between, $align: space-between, $direction: row);
 }
 
-.supply-data{
+.supply-data {
     margin-left: 40px;
 }
 
-.right-info{
+.right-info {
     padding-left: 40px;
     width: 50vw;
     @include flex($justify: flex-start, $align: flex-start, $direction: column);
+}
+
+.green {
+    background-color: #86efac;
+    font-weight: 700;
+}
+
+.red {
+    background-color: #fca5a5;
+    font-weight: 700;
 }
