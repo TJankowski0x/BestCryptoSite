@@ -6,11 +6,11 @@ nav {
     background-color: $background-color;
     border-bottom: 1px solid $border-color;
     font-family: Comfortaa;
-    font-size: 28px;
+    font-size: 25px;
 }
 
-.nav-link{
-        padding: 15px;
+.nav-link {
+    padding: 10px;
 }
 
 .nav-container {
@@ -44,7 +44,23 @@ nav {
         @include flex(space-between, center);
         > .nav-link {
             color: $white;
+            position: relative;
             text-decoration: none;
+            text-transform: uppercase;
+            &::after {
+                content: '';
+                width: 0;
+                height: 1px;
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+                transition: width 300ms;
+                background-color: $white;
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
         }
     }
 }

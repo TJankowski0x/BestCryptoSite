@@ -11,7 +11,7 @@ const Nav = () => {
                         <NavLink to={'/'} className="nav-link">
                             <MdOutlineHouse
                                 className="icon"
-                                style={{ height: '50px', width: '50px', aspectRatio: '1/1' }}
+                                style={{ height: '45px', width: '45px', aspectRatio: '1/1' }}
                             />
                         </NavLink>
                         <NavLink to={'/bitcoin'} className="nav-link">
