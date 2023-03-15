@@ -154,7 +154,11 @@ const CryptoDetails = () => {
                             <p className="header">Supply Data</p>
                             <BoxInfo
                                 text="Max Supply"
-                                whiteInfo={cryptoInfo.market_data.max_supply}
+                                whiteInfo={
+                                    cryptoInfo.market_data.max_supply == null
+                                        ? 'N/A'
+                                        : cryptoInfo.market_data.max_supply
+                                }
                                 styles={{ isTrue: false }}
                             />
                             <BoxInfo
