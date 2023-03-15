@@ -22,7 +22,7 @@ const CryptoDetails = () => {
         isError
     } = useQuery('cryptoDetails', () => {
         return Axios.get(
-            `https://api.coingecko.com/api/v3/coins/${cryptoID}?community_data=false&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
+            `https://api.coingecko.com/api/v3/coins/${cryptoID}?community_data=false&sparkline=true`
         ).then((res) => res.data);
     });
 
