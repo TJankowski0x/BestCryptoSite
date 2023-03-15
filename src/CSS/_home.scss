@@ -10,6 +10,7 @@
         background-color: $grey;
         border: 2px $border-color solid;
         border-radius: 10px;
+        border-collapse: collapse;
         height: 40px;
         width: 20vw;
         color: $white;
@@ -27,10 +28,12 @@
         td {
             font-weight: 330;
             @include table;
+            border-collapse: collapse;
+            border-right: none;
             border-bottom: none;
             border-top: none;
         }
-
+        border-collapse: collapse;
         border-radius: 15px;
         border: 2px $border-color solid;
         border-spacing: 0px;
