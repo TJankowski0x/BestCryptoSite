@@ -3,7 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
-    
+    "homepage": "https://raichuk.github.io/BestCryptoSite",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
