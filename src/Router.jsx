@@ -8,7 +8,7 @@ import CryptoDetails from './pages/CryptoDetails';
 
 const App = () => {
     return (
-        <Router>
+        <Router basename="/">
             <Nav />
             <div className="site-container">
                 <Routes>
