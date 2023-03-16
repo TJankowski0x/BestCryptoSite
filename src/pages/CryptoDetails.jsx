@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 
 const BoxInfo = (props) => {
-    console.log(props);
     const style = props.styles.isTrue ? (props.styles.color ? 'green' : 'red') : '';
     return (
         <div className={`white-box-details ${style}`}>

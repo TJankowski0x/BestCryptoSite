@@ -2,10 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Axios from 'axios';
+import Search from '../components/Search';
 
 const Home = () => {
-    // const [marketData, setMarket] = useState(false)
-
     const {
         data: marketData,
         isLoading,
@@ -15,11 +14,11 @@ const Home = () => {
         'marketInfo',
         () => {
             return Axios.get(
-                'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h'
+                'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=1h'
             ).then((res) => res.data);
         },
         {
-            refetchInterval: 60000
+            refetchInterval: 90000
         }
     );
 
@@ -35,7 +34,7 @@ const Home = () => {
         <div className="home">
             <div className="homeheader">
                 <p>Top cryptocurrencies right now</p>
-                <input type="text" className="homeinput" />
+                <Search />
             </div>
             <div className="table-container">
                 <table>
