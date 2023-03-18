@@ -32,8 +32,8 @@ const Home = () => {
 
     return (
         <div className="home">
-            <div className="homeheader">
-                <p>Top cryptocurrencies right now</p>
+            <div className="home-header">
+                <p className="home-title">Top cryptocurrencies right now</p>
                 <Search />
             </div>
             <div className="table-container">

@@ -36,7 +36,7 @@ const CryptoDetails = () => {
     return (
         <div className="details-container">
             <div className="head-info">
-                <img src={cryptoInfo.image.large} alt="coinlogo" />
+                <img src={cryptoInfo.image.large} alt="coinlogo" className="crypto-img" />
                 <div className="crypto-name">
                     <h1>{cryptoInfo.name}</h1>
                 </div>

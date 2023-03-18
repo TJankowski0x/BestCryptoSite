@@ -1,53 +1,72 @@
 @use './globals' as *;
 
 .home {
-    p {
-        font-size: 42px;
-    }
-
-    table {
-        th {
-            font-weight: 430;
-            text-align: start;
-            @include table;
-            border-bottom: none;
-            border-right: none;
-            border-collapse: collapse;
-        }
-
-        td {
-            font-weight: 330;
-            @include table;
-            border-right: none;
-            border-bottom: none;
-            border-top: none;
-        }
-
-        border-radius: 15px !important;
-        border: 2px $border-color solid;
-        border-spacing: 0px;
-        font-size: 20px;
-        width: 100%;
-        overflow: hidden;
-    }
     background-color: $background-color;
     height: 90vh;
     color: $white;
     font-family: Comfortaa;
     @include flex($justify: center, $align: center, $direction: column);
+    > .home-header {
+        @include flex($justify: space-between, $align: center, $direction: row);
+        width: 85vw;
+        height: 13vh;
+        > .home-title {
+            font-size: 42px;
+        }
+    }
+    > .table-container {
+        width: 85%;
+        > table {
+            border-radius: 15px;
+            border: 2px $border-color solid;
+            border-spacing: 0px;
+            font-size: 20px;
+            width: 100%;
+            overflow: hidden;
+            a {
+                color: $white;
+                text-decoration: none;
+            }
+            th {
+                @include table;
+                font-weight: 430;
+                text-align: start;
+                border-bottom: none;
+                border-right: none;
+            }
+            td {
+                @include table;
+                font-weight: 330;
+                border-right: none;
+                border-bottom: none;
+                border-top: none;
+            }
+        }
+    }
 }
 
-.homeheader {
-    @include flex($justify: space-between, $align: center, $direction: row);
-    width: 85%;
-}
-
-.table-container {
-    width: 85%;
-    border-radius: 15px !important;
-}
-
-a {
-    color: $white;
-    text-decoration: none;
+@media screen and (max-width: 600px) {
+    .home {
+        height: 90vh;
+        > .home-header {
+            @include flex($justify: center, $align: center, $direction: column-reverse);
+            font-size: 20px;
+            width: 100%;
+            > .home-title {
+                text-align: center;
+                font-size: 32px;
+                padding-left: 10px;
+            }
+            > .home-input {
+                margin-top: 15px;
+                height: 40px;
+                width: 80vw;
+                font-size: 20px;
+            }
+        }
+        > .table-container {
+            width: 85%;
+            overflow-x: auto;
+        }
+    }
 }

@@ -7,48 +7,64 @@
     overflow: hidden;
     color: $white;
     font-family: Comfortaa;
-    width: 100%;
+    width: 100vw;
     @include flex($justify: flex-start, $align: flex-start, $direction: column);
-}
+    > .head-info {
+        font-size: 26px;
+        margin-left: 100px;
+        @include flex($justify: flex-start, $align: center, $direction: row);
 
-.head-info {
-    img {
-        width: 100px;
-        height: 100px;
+        > .crypto-img {
+            width: 100px;
+            height: 100px;
+        }
+
+        > .crypto-name {
+            margin: 40px;
+        }
+
+        > .crypto-price {
+            background-color: #bfdbfe;
+            border-radius: 18px;
+            color: $background-color;
+            height: 70px;
+            width: 300px;
+            @include flex($justify: center, $align: center, $direction: row);
+
+            h2 {
+                font-weight: 700;
+                font-size: 40px;
+                margin: 40px;
+            }
+        }
     }
-    font-size: 30px;
-    margin-left: 100px;
-    @include flex($justify: flex-start, $align: center, $direction: row);
-}
 
-.head-box {
-    background-color: #bfdbfe;
-    border-radius: 18px;
-    color: $background-color;
-    height: 70px;
-    width: 300px;
-    @include flex($justify: center, $align: center, $direction: row);
-}
+    > .rest-data {
+        margin-left: 100px;
+        @include flex($justify: center, $align: flex-start, $direction: row);
+        > .left-info {
+            width: 40vw;
+            @include flex($justify: space-between, $align: space-between, $direction: column);
 
-.head-price {
-    font-weight: lighter;
-    font-size: 26px;
-    margin: 40px;
-}
+            > .bot-box {
+                @include flex($justify: space-between, $align: space-between, $direction: row);
 
-.crypto-name {
-    margin: 40px;
-}
-
-.rest-data {
-    margin-left: 100px;
-    @include flex($justify: center, $align: flex-start, $direction: row);
-}
-
-.header {
-    font-size: 42px;
-    margin: 10px;
-    margin-bottom: 20px;
+                > .supply-data {
+                    margin-left: 40px;
+                }
+            }
+        }
+        > .right-info {
+            padding-left: 40px;
+            width: 50vw;
+            @include flex($justify: flex-start, $align: flex-start, $direction: column);
+        }
+        .box-title {
+            font-size: 42px;
+            margin: 10px;
+            margin-bottom: 20px;
+        }
+    }
 }
 
 .white-box-details {
@@ -58,30 +74,10 @@
     font-weight: bold;
     margin: 10px;
     @include flex($justify: space-between, $align: center, $direction: row);
-}
-
-.white-box-p {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.left-info {
-    width: 40vw;
-    @include flex($justify: space-between, $align: space-between, $direction: column);
-}
-
-.bot-box {
-    @include flex($justify: space-between, $align: space-between, $direction: row);
-}
-
-.supply-data {
-    margin-left: 40px;
-}
-
-.right-info {
-    padding-left: 40px;
-    width: 50vw;
-    @include flex($justify: flex-start, $align: flex-start, $direction: column);
+    > .white-box-p {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 
 .green {
@@ -92,4 +88,60 @@
 .red {
     background-color: #fca5a5;
     font-weight: 700;
+}
+
+@media screen and (max-width: 600px) {
+    .details-container {
+        overflow-y: auto;
+        width: 100vw;
+        > .head-info {
+            font-size: 18px;
+            margin-left: 0px;
+            @include flex($justify: center, $align: center, $direction: row);
+            flex-wrap: wrap;
+            width: 100vw;
+            > .crypto-img {
+                width: 70px;
+                height: 70px;
+            }
+            > .crypto-name {
+                margin: 0px;
+                margin-right: 20px;
+                margin-left: 20px;
+                font-size: 25px;
+            }
+            > .crypto-price {
+                height: 50px;
+                width: 80%;
+                @include flex($justify: center, $align: center, $direction: row);
+                h2 {
+                    font-size: 25px;
+                }
+            }
+        }
+        > .rest-data {
+            @include flex($justify: center, $align: flex-start, $direction: column);
+            margin: 0px;
+            width: 100vw;
+            > .left-info {
+                width: 100vw;
+                @include flex($justify: space-between, $align: space-between, $direction: column);
+                > .bot-box {
+                    @include flex(
+                        $justify: space-between,
+                        $align: space-between,
+                        $direction: column
+                    );
+                    > .supply-data {
+                        margin-left: 0px;
+                    }
+                }
+            }
+            > .right-info {
+                width: 80vw;
+                @include flex($justify: center, $align: flex-start, $direction: column);
+                margin: 10px;
+            }
+        }
+    }
 }

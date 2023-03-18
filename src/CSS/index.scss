@@ -11,6 +11,14 @@ body {
     overflow: hidden;
 }
 
+@media screen and (max-width: 600px) {
+    body {
+        max-height: -moz-fit-content;
+        max-height: fit-content;
+        overflow: auto;
+    }
+}
+
 .site-container {
     width: 100%;
     min-height: 90vh;

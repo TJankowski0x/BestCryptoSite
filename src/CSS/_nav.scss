@@ -64,3 +64,30 @@ nav {
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    nav {
+        @include flex($justify: space-around, $align: center, $direction: row);
+        font-size: 15px;
+        width: 100vw;
+    }
+    .nav-link {
+        padding: 5px;
+    }
+
+    .nav-left-container {
+        @include flex($justify: flex-start, $align: center);
+        width: 50%;
+        > .nav-logo {
+            @include flex($justify: flex-start, $align: center);
+        }
+    }
+    .nav-right-container {
+        @include flex($justify: flex-end, $align: center);
+        width: 50%;
+        > .nav-links-container {
+            padding: 5px;
+            @include flex($justify: space-around, $align: center);
+        }
+    }
+}
