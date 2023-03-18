@@ -5,6 +5,7 @@ import { Axios } from 'axios';
 import Nav from './components/Nav';
 import Home from './pages/Home';
 import CryptoDetails from './pages/CryptoDetails';
+import SearchResults from './pages/SearchResults';
 
 const App = () => {
     return (
@@ -14,6 +15,8 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/:cryptoID" element={<CryptoDetails />} />
+                    <Route path="/search/:searchValue" element={<SearchResults />} />
+                    <Route path="*" element={<h1>404</h1>} />
                 </Routes>
             </div>
         </Router>
