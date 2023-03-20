@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Axios from 'axios';
 import Search from '../components/Search';
 
 const Home = () => {
+    const [allCoins, setAllCoins] = useState([]);
+
+    const { data: allCoinsData } = useQuery('allCoins', () => {
+        return Axios.get('/api/api/v3/coins/list').then((res) => {
+            setAllCoins(res.data);
+        });
+    });
+
     const {
         data: marketData,
         isLoading,

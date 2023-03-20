@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
-
+import SearchBox from '../components/SearchBox';
 const SearchResults = () => {
     const { searchValue } = useParams();
-    console.log(searchValue);
     const [searchResults, setSearchResults] = useState([]);
     const { data, isLoading, isError } = useQuery('search', () => {
         Axios.get(`/api/api/v3/search?query=${searchValue}`).then((res) =>
@@ -25,7 +24,8 @@ const SearchResults = () => {
         <div className="search-results">
             <ul>
                 {searchResults.slice(0, 5).map((coin) => {
-                    return <li>{coin.name}</li>;
+                    //console.log(coin);
+                    return <SearchBox coin={coin} />;
                 })}
             </ul>
         </div>
