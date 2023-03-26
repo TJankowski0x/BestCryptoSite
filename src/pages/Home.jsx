@@ -1,48 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Axios from 'axios';
 import Search from '../components/Search';
 
-const Home = () => {
-    const [allCoins, setAllCoins] = useState([]);
-
-    const { data: allCoinsData } = useQuery('allCoins', () => {
-        return Axios.get('/api/api/v3/coins/list').then((res) => {
-            setAllCoins(res.data);
-        });
-    });
-
-    const {
-        data: marketData,
-        isLoading,
-        isError,
-        refetchOnWindowFocus
-    } = useQuery(
-        'marketInfo',
-        () => {
-            return Axios.get(
-                '/api/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=1h'
-            ).then((res) => res.data);
-        },
-        {
-            refetchInterval: 90000
-        }
+const fetchMarketData = () => {
+    return Axios.get(
+        '/api/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=1h'
     );
+};
+
+const fetchAllCoins = () => {
+    return Axios.get('/api/api/v3/coins/list');
+};
+
+const Home = () => {
+    const [allCoins, setAllCoins] = useState(false);
+    const { data: allCoinsData } = useQuery('allCoinsData', fetchAllCoins);
+    useEffect(() => {
+        if (allCoinsData) {
+            setAllCoins(allCoinsData.data);
+        }
+    }, [allCoinsData]);
+    const { data: marketData, isLoading, isError } = useQuery('marketData', fetchMarketData);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div className="loading">Loading...</div>;
     }
 
     if (isError) {
-        return <div>Error...</div>;
+        return <div className="error">Error...</div>;
     }
 
     return (
         <div className="home">
             <div className="home-header">
                 <p className="home-title">Top cryptocurrencies right now</p>
-                <Search />
+                <Search coinList={allCoinsData ? allCoinsData : []} />
             </div>
             <div className="table-container">
                 <table>
@@ -57,7 +51,7 @@ const Home = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {marketData.slice(0, 10).map((coin) => {
+                        {marketData.data.slice(0, 10).map((coin) => {
                             return (
                                 <tr>
                                     <td>{coin.market_cap_rank}</td>

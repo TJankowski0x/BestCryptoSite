@@ -26,11 +26,11 @@ const CryptoDetails = () => {
     });
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div className="loading">Loading...</div>;
     }
 
     if (isError) {
-        return <div>Error...</div>;
+        return <div className="error">Error...</div>;
     }
 
     return (

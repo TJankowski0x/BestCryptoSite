@@ -23,3 +23,13 @@ body {
     width: 100%;
     min-height: 90vh;
 }
+
+.error,
+.loading {
+    color: $background-color;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+    padding: 1rem;
+}
