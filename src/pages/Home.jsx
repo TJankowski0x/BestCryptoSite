@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Axios from 'axios';
@@ -10,13 +10,21 @@ const fetchMarketData = () => {
     );
 };
 
-const fetchAllCoins = () => {
-    return Axios.get('/api/api/v3/coins/list');
-};
-
 const Home = () => {
+    const fetchAllCoins = useMemo(() => {
+        return () => Axios.get('/api/api/v3/coins/list');
+    }, []);
+
     const [allCoins, setAllCoins] = useState(false);
-    const { data: allCoinsData } = useQuery('allCoinsData', fetchAllCoins);
+    const { data: allCoinsData, refetch } = useQuery('allCoinsData', fetchAllCoins, {
+        keepPreviousData: true,
+        enabled: false
+    });
+
+    useEffect(() => {
+        refetch(); // Manually fetch data when the component mounts
+    }, [refetch]);
+
     useEffect(() => {
         if (allCoinsData) {
             setAllCoins(allCoinsData.data);

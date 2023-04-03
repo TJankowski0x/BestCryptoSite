@@ -2,6 +2,7 @@
 
 .search {
     background: url() no-repeat 17px 17px;
+    z-index: 6;
     border-radius: 10px;
     border: 2px $border-color solid;
     border-collapse: collapse;
@@ -31,19 +32,6 @@
     :focus {
         outline: none;
     }
-
-    .results-list {
-        position: absolute;
-        top: 40px;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        border: 1px solid #ccc;
-        border-top: none;
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-        padding: 10px;
-        z-index: 1;
-    }
 }
 
 .search-results {
@@ -54,16 +42,6 @@
     align-items: center;
     justify-content: center;
     background-color: $background-color;
-    > ul {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        list-style: none;
-    }
 }
 
 .search-res-box {
@@ -88,6 +66,40 @@
             font-size: 20px;
             gap: 5px;
             color: $white;
+        }
+    }
+}
+
+.results-list {
+    border: 1px solid $lightblack;
+    border-radius: 10px;
+    width: calc(21% + 4px);
+    height: fit-content;
+    position: fixed;
+    z-index: 5;
+    top: 24%;
+    left: 71%;
+    padding-left: 0;
+    padding-top: 15px;
+    list-style: none;
+    list-style-position: inside;
+    background-color: $border-color;
+
+    > .name-link {
+        text-decoration: none;
+        color: $white;
+        font-size: 1.2em;
+        height: 1.2em;
+        width: 100%;
+        line-height: 1.2em;
+        > .result-item {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            border-top: 1px solid black;
+            padding-top: 10px;
+            padding-left: 7px;
         }
     }
 }

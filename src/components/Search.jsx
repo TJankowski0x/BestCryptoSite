@@ -39,10 +39,11 @@ const Search = ({ coinList }) => {
                     type="text"
                     name="search"
                     id="search"
+                    autoComplete="off"
                     onChange={handleSearchInputChange}
                     onKeyDown={handleOnKeyDown}
                     onFocus={() => setShowResults(true)}
-                    onBlur={() => setShowResults(false)}
+                    onBlur={() => setShowResults(true)}
                 />
                 <button className="search-button">
                     <RxMagnifyingGlass />
