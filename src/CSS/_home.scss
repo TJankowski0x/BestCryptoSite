@@ -47,7 +47,6 @@
 
 @media screen and (max-width: 600px) {
     .home {
-        height: 90vh;
         > .home-header {
             @include flex($justify: center, $align: center, $direction: column-reverse);
             font-size: 20px;
@@ -58,7 +57,7 @@
                 padding-left: 10px;
             }
             > .home-input {
-                margin-top: 15px;
+                margin-top: 10vh;
                 height: 40px;
                 width: 80vw;
                 font-size: 20px;
@@ -67,6 +66,7 @@
         > .table-container {
             width: 85%;
             overflow-x: auto;
+            margin-top: 8vh;
         }
     }
 }

@@ -11,25 +11,43 @@ body {
     overflow: hidden;
 }
 
-@media screen and (max-width: 600px) {
-    body {
-        max-height: -moz-fit-content;
-        max-height: fit-content;
-        overflow: auto;
-    }
-}
-
 .site-container {
     width: 100%;
     min-height: 90vh;
 }
 
-.error,
-.loading {
-    color: $background-color;
-    font-size: 1.5rem;
+.error, .loading{
+    color: $white;
+    background-color: $background-color;
+    width: 100%;
+    height: 90vh;
+    font-size: 72px;
     font-weight: 600;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
     padding: 1rem;
+}
+
+.loading-animation{
+    background-color: $background-color;
+    border: 16px dotted $white; 
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: anim 1.2s linear infinite;
+  }
+  
+  @keyframes anim {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @media screen and (max-width: 600px) {
+    body {
+        max-height: -moz-fit-content;
+        max-height: fit-content;
+        overflow: auto;
+    }
 }

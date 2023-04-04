@@ -88,7 +88,7 @@ const CryptoDetails = () => {
                                         ? '+' +
                                           cryptoInfo.market_data.price_change_percentage_1h_in_currency.usd.toFixed(
                                               2
-                                          )
+                                          ) + '%'
                                         : cryptoInfo.market_data.price_change_percentage_1h_in_currency.usd.toFixed(
                                               2
                                           ) + '%'

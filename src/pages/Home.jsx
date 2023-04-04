@@ -33,7 +33,7 @@ const Home = () => {
     const { data: marketData, isLoading, isError } = useQuery('marketData', fetchMarketData);
 
     if (isLoading) {
-        return <div className="loading">Loading...</div>;
+        return <div className="loading"><div className='loading-animation'></div></div>;
     }
 
     if (isError) {

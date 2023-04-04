@@ -28,7 +28,6 @@
         width: 15%;
         height: 100%;
     }
-
     :focus {
         outline: none;
     }
@@ -46,9 +45,11 @@
 
 .search-res-box {
     width: 75vw;
-    height: 15vh;
+    height: 12vh;
     border-radius: 10px;
     background-color: $lightblack;
+    margin: 20px;
+    list-style-type: none;
 
     > .search-link {
         width: 100%;
@@ -80,7 +81,7 @@
     top: 24%;
     left: 71%;
     padding-left: 0;
-    padding-top: 15px;
+    padding-top: 0;
     list-style: none;
     list-style-position: inside;
     background-color: $border-color;
@@ -102,4 +103,9 @@
             padding-left: 7px;
         }
     }
+}
+
+@media screen and (max-width: 600px) {
+
+
 }
